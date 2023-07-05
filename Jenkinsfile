@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    
+    stages{
     stage('Preparation') { // for display purposes
       steps
       {
@@ -37,5 +37,6 @@ pipeline {
       steps{
       echo 'Post-Build...'
       }
+    }
     }
 }

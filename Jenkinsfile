@@ -1,7 +1,7 @@
 pipeline {
     agent any
-    
-    stages('Preparation') { // for display purposes
+    stages{
+    stage('Preparation') { // for display purposes
       steps
       {
         echo 'Pre-Build...'
@@ -13,29 +13,30 @@ pipeline {
       }
         
     }
-    stages('Perform Model-In-Loop Tests') {
+    stage('Perform Model-In-Loop Tests') {
       steps{
         // Run the maven build
         build 'Model_In_Loop_Stage'
         }
     }
     
-    stages('Perform Auto CodeGenerattion') {
+    stage('Perform Auto CodeGenerattion') {
       steps{
         // Run the maven build
         build 'CodeGen'
         }
     }
     
-    stages('Perform Software-In-Loop Tests') {
+    stage('Perform Software-In-Loop Tests') {
       steps{
         // Run the maven build
         build 'Software_In_Loop_Stage'
         }
     }
-    stages('Results') {
+    stage('Results') {
       steps{
       echo 'Post-Build...'
       }
+    }
     }
 }
